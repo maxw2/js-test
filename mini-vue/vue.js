@@ -11,14 +11,20 @@ class Vue {
         el: '',
         data: {}
     }
+    el = null
+    template = ''
     constructor(option) {
         this.opt = Object.assign({}, this.opt, option)
         console.log(this.opt)
         observe(this.opt.data, this)
-        new Watcher(this)
+        this.getTemplate()
+
     }
-
-
+    getTemplate() {
+        this.el = document.querySelector(this.opt.el)
+        this.template = this.el.innerHTML
+        render(this)
+    }
 
 }
 /**
@@ -28,6 +34,8 @@ class Vue {
 function observe(data, vm) {
     const _data = data
     const _vm = vm
+
+    new Watcher(_vm)
 
     for (let key in _data) {
         let value = _data[key]
@@ -47,12 +55,13 @@ function observe(data, vm) {
             enumerable: true,
             get: function reactiveGetter() {
                 if (Dep.target) dep.addSub(Dep.target)
-                
-                return _vm[key] || value
+                if (!_vm[key]) _vm[key] = value
+             
+                return _vm[key]
             },
             set: function reactiveSetter(newVal) {
-                if (_vm[key] || value === newVal) return
-                
+                if (_vm[key] === newVal) return
+
                 _vm[key] = newVal
                 dep.notify()
             }
@@ -93,8 +102,24 @@ class Watcher {
 
     upDate() {
         console.log('视图更新')
+        render(this.vm)
     }
 
+
+}
+
+/**
+ * Render 视图加载
+ */
+function render(vm) {
+    let template = vm.template
+    let data = vm.opt.data
+    let el = vm.el
+
+    Object.keys(data).forEach(key => {
+        template = template.replace(`{{${key}}}`, data[key])
+        el.innerHTML = template
+    });
 
 }
 
