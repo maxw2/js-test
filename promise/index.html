@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./promise.js"></script>
     <title>Promise</title>
 </head>
+
 <body>
     <div></div>
 </body>
 <script>
-    
+
+    new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(this)
+            resolve('ok')
+        }, 1000)
+    }).then((res) => {
+        console.log(res)
+    })
+
+
+
+    // 
+    // 
+    // new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         reject('ok')
+    //     }, 1000)
+    // }).then((res) => {
+    //     console.log(res, 'then')
+    // })
+
+
+
+
 </script>
+
 </html>
