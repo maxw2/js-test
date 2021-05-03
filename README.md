@@ -4,3 +4,4 @@
 - [x] Vue发布订阅模式
 - [ ] Promise
 - [ ] 防抖/节流
+- [ ] call/bind/apply
