@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call/apply/bind</title>
+    <script src="./call.js"></script>
+</head>
+<body>
+    <script>
+        let mouse = {
+            name: 'Tom'
+        }
+
+        let cat = {
+            name: 'jerry',
+            getName: function(){
+                console.log(this.name)
+            },
+            setName: function (newName) {
+                this.name = newName
+                console.log(this.name)
+            }
+        }
+
+        cat.setName.myCall(mouse,'xixi')
+        cat.setName.myApply(mouse,['haha'])
+        cat.setName.myBind(mouse,'heihei')()
+    </script>
+</body>
+</html>
