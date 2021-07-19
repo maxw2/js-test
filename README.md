@@ -5,3 +5,4 @@
 - [ ] Promise
 - [ ] 防抖/节流
 - [ ] call/bind/apply
+- [ ] new 方法实现
