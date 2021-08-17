@@ -3,6 +3,6 @@
 
 - [x] Vue发布订阅模式
 - [ ] Promise
-- [ ] 防抖/节流
-- [ ] call/bind/apply
+- [x] 防抖/节流
+- [x] call/bind/apply
 - [x] new 方法实现
