@@ -6,3 +6,4 @@
 - [x] 防抖/节流
 - [x] call/bind/apply
 - [x] new 方法实现
+- [ ] cookie 修改/查询
